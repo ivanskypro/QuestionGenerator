@@ -1,5 +1,6 @@
 package pro.sky.java.course2.questiongenerator.controller;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,12 +20,23 @@ public class Controller {
     }
 
 
+    @GetMapping("/add")
     String addQuestion(@RequestParam String question, @RequestParam String answer) {
-        return null;
+        questionService.add(question, answer);
+        return "Вопрос: " + question + " Ответ: " + answer + ". успешно добавлены.";
     }
 
+
+    @GetMapping("")
     Collection<Question> getQuestions(){
-        return null;
+        return questionService.getAll();
+
+    }
+    @GetMapping("/remove")
+    String removeQuestion(@RequestParam String question, @RequestParam String answer) {
+        Question removingQuestion = new Question(question, answer);
+        questionService.remove(removingQuestion);
+        return "Вопрос " + removingQuestion + " успешно удалён!";
     }
 
 }

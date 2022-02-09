@@ -4,9 +4,8 @@ import org.springframework.stereotype.Service;
 import pro.sky.java.course2.questiongenerator.data.Question;
 import pro.sky.java.course2.questiongenerator.exceptions.BadRequestException;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
+import java.util.HashSet;
 
 
 @Service
@@ -21,7 +20,7 @@ public class ExaminerServiceImpl implements ExaminerService {
 
     @Override
     public Collection<Question> getQuestions(int amount) {
-        List<Question> randomQuestions = new ArrayList<>();
+        HashSet<Question> randomQuestions = new HashSet<>();
         int listSize = questionService.getAll().size();
         if (amount > listSize) {
             throw new BadRequestException();

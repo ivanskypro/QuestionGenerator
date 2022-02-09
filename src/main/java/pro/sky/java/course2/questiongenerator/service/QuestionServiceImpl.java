@@ -40,7 +40,6 @@ public class QuestionServiceImpl implements QuestionService{
         if (!questions.contains(question)){
             throw new QuestionNotExistException();
         }
-        if (questions.contains(question))
             questions.remove(question);
             return question;
     }
